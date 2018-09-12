@@ -5,6 +5,9 @@ import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author yinan
@@ -19,8 +22,9 @@ public class Server {
         while (flag) {
             client = server.accept();
             System.out.println("与客户端连接成功");
-            Executors.newFixedThreadPool(4).execute(new ServerThread(client));
-//            new Thread(new ServerThread(client)).start();
+
+            new ThreadPoolExecutor(4, 8, 8, TimeUnit.SECONDS, new LinkedBlockingDeque<>(100)).execute(new ServerThread(client));
+
         }
 
 
