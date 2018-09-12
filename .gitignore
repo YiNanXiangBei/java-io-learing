@@ -62,5 +62,6 @@ fabric.properties
 .idea/httpRequests
 
 /.idea/
+/NIO/NIO.iml
 /JavaIO/JavaIO.iml
 /JavaIO/target/
