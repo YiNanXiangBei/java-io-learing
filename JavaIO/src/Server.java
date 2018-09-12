@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.Executors;
 
 /**
  * @author yinan
@@ -19,8 +19,12 @@ public class Server {
         while (flag) {
             client = server.accept();
             System.out.println("与客户端连接成功");
-            new Thread(new ServerThread(client)).start();
+            Executors.newFixedThreadPool(4).execute(new ServerThread(client));
+//            new Thread(new ServerThread(client)).start();
         }
+
+
+
         server.close();
     }
 }
