@@ -30,10 +30,9 @@ public class ReadEventHandler implements EventHandler {
         socketChannel.read(inputBuffer);
         inputBuffer.flip();
 
-        System.out.println("Received message form client : " + new String(inputBuffer.array()));
-        inputBuffer.flip();
+        System.out.println("Received message  : " + new String(inputBuffer.array()));
 
-        socketChannel.register(demultiplexer, SelectionKey.OP_WRITE, inputBuffer);
+        handle.interestOps(SelectionKey.OP_WRITE);
 
     }
 }

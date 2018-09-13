@@ -1,7 +1,6 @@
 import java.net.InetSocketAddress;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
-import java.nio.charset.Charset;
 
 /**
  * @author yinan
@@ -19,7 +18,8 @@ public class Client {
         reactor.registerEventHandler(SelectionKey.OP_READ, new ReadEventHandler());
         reactor.registerEventHandler(SelectionKey.OP_WRITE, new WriteEventHandler());
         //注册channel
-        reactor.registerChannel(SelectionKey.OP_READ, channel);
+        reactor.registerChannel(SelectionKey.OP_CONNECT
+                | SelectionKey.OP_WRITE, channel);
         reactor.run();
 
     }

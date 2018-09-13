@@ -24,7 +24,7 @@ public class NIOClient {
         try {
             SocketChannel socketChannel = SocketChannel.open();
             socketChannel.configureBlocking(false);
-            socketChannel.connect(new InetSocketAddress("www.baidu.com", 80));
+            socketChannel.connect(new InetSocketAddress("127.0.0.1", 8881));
             socketChannel.register(selector, SelectionKey.OP_CONNECT | SelectionKey.OP_READ | SelectionKey.OP_WRITE);
             NIOClient client = new NIOClient();
             //selector.select() 是同步阻塞的

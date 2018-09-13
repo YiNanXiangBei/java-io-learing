@@ -33,11 +33,11 @@ public class Reactor {
                 Set<SelectionKey> readyHandles = demultiplexer.selectedKeys();
                 for (SelectionKey handle : readyHandles) {
                     if (handle.isAcceptable()) {
-                        EventHandler handler = registerHandlers.get(SelectionKey.OP_ACCEPT);
+                        AcceptEventHandler handler = (AcceptEventHandler) registerHandlers.get(SelectionKey.OP_ACCEPT);
+                        handler.setDemultiplexer(demultiplexer);
                         handler.handleEvent(handle);
                     } else if (handle.isReadable()) {
-                        ReadEventHandler handler = (ReadEventHandler) registerHandlers.get(SelectionKey.OP_READ);
-                        handler.setDemultiplexer(demultiplexer);
+                        EventHandler handler = registerHandlers.get(SelectionKey.OP_READ);
                         handler.handleEvent(handle);
                     } else if (handle.isWritable()) {
                         EventHandler handler = registerHandlers.get(SelectionKey.OP_WRITE);
