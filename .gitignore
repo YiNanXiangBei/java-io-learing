@@ -66,3 +66,5 @@ fabric.properties
 /JavaIO/JavaIO.iml
 /JavaIO/target/
 /ReactorIO/ReactorIO.iml
+!/ReactorIOV2/ReactorIOV2.iml
+/ReactorIOV2/ReactorIOV2.iml
