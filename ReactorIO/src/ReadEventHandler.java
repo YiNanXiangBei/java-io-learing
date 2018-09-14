@@ -2,6 +2,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
+import java.nio.charset.Charset;
 
 /**
  * @author yinan
@@ -29,9 +30,10 @@ public class ReadEventHandler implements EventHandler {
         //从客户端读取数据
         socketChannel.read(inputBuffer);
         inputBuffer.flip();
-
-        System.out.println("Received message  : " + new String(inputBuffer.array()));
-
+        Charset charset = Charset.forName("UTF-8");
+        String receivedData = charset.decode(inputBuffer).toString();
+        System.out.println("Received message  : " + receivedData);
+        inputBuffer.clear();
         handle.interestOps(SelectionKey.OP_WRITE);
 
     }

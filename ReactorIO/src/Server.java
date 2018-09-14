@@ -18,7 +18,7 @@ public class Server {
         reactor.registerEventHandler(SelectionKey.OP_READ, new ReadEventHandler());
         reactor.registerEventHandler(SelectionKey.OP_WRITE, new WriteEventHandler());
         //注册channel
-        reactor.registerChannel(SelectionKey.OP_ACCEPT, serverSocketChannel);
+            reactor.registerChannel(SelectionKey.OP_ACCEPT, serverSocketChannel);
         reactor.run();
     }
 
