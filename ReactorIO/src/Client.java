@@ -11,7 +11,7 @@ public class Client {
     public static void main(String[] args) throws Exception {
         SocketChannel channel = SocketChannel.open();
         channel.configureBlocking(false);
-        channel.connect(new InetSocketAddress("127.0.0.1", 10393));
+        channel.connect(new InetSocketAddress("127.0.0.1", 7071));
         Reactor reactor = new Reactor();
         //注册handler
         reactor.registerEventHandler(SelectionKey.OP_CONNECT, new ConnectEventHandler());

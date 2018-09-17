@@ -42,7 +42,7 @@ public class Acceptor implements Runnable{
             Reactor subReactor = reactors[next];
             Selector suSelector = subReactor.getSelector();
             try {
-                //首先占住资源
+                //首先占住资源，控制访问特定资源的线程数量
                 subReactor.semaphore.acquire();
                 //唤醒selector,释放publickeys的锁定，并阻塞等待资源
                 suSelector.wakeup();

@@ -25,7 +25,7 @@ public class MultiReactor {
     private int port;
     private static final int POOL_SIZE = 3;
     private static final int MAX_POOL_SIZE = 5;
-    private static ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(POOL_SIZE, MAX_POOL_SIZE, 10, TimeUnit.SECONDS, new SynchronousQueue(), new ThreadFactory() {
+    private static ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(POOL_SIZE, MAX_POOL_SIZE, 10, TimeUnit.SECONDS, new SynchronousQueue<>(), new ThreadFactory() {
         private AtomicInteger count = new AtomicInteger();
         @Override
         public Thread newThread(Runnable r) {
