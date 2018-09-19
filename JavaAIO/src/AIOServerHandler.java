@@ -30,7 +30,7 @@ public class AIOServerHandler implements CompletionHandler<AsynchronousSocketCha
                 System.out.println(attachment.capacity());
                 attachment.flip();
                 System.out.println("from client : " + new String(attachment.array(), StandardCharsets.UTF_8));
-
+                doWrite(channel);
             }
 
             @Override

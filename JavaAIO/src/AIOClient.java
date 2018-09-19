@@ -15,7 +15,7 @@ public class AIOClient {
     private AsynchronousSocketChannel channel;
 
     public AIOClient(String host, int port) {
-
+        init(host, port);
     }
 
     public void init(String host, int port) {
